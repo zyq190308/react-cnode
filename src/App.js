@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { createStore } from 'redux';
 import reducer from './reducer';
 
+import { increment, decrement } from './action'
+
 let store = createStore(reducer);
 let unsubscribe = null;
 
@@ -27,17 +29,11 @@ class App extends Component {
   }
   increment() {
     let tempNum = this.state.number
-    store.dispatch({
-      type: 'increment',
-      number: ++tempNum
-    })
+    store.dispatch(increment(++tempNum))
   }
   decrement() {
     let tempNum = this.state.number
-    store.dispatch({
-      type: 'decrement',
-      number: --tempNum
-    })
+    store.dispatch(decrement(--tempNum))
   }
   render() {
     return (
