@@ -1,23 +1,39 @@
 import React, { Component } from 'react';
+import { createStore } from 'redux';
+import reducer from './reducer';
+
+let store = createStore(reducer);
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      number: 0
-    };
+      number: store.getState().number
+    }
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
   }
+  componentDidMount() {
+    store.subscribe(() => {
+      this.setState({
+        number: store.getState().number
+      })
+    })
+
+  }
   increment() {
-    this.setState((state) => ({
-      number: ++state.number
-    }));
+    let tempNum = this.state.number
+    store.dispatch({
+      type: 'increment',
+      number: ++tempNum
+    })
   }
   decrement() {
-    this.setState((state) => ({
-      number: --state.number
-    }));
+    let tempNum = this.state.number
+    store.dispatch({
+      type: 'decrement',
+      number: --tempNum
+    })
   }
   render() {
     return (
