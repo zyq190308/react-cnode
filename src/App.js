@@ -3,6 +3,7 @@ import { createStore } from 'redux';
 import reducer from './reducer';
 
 let store = createStore(reducer);
+let unsubscribe = null;
 
 class App extends Component {
   constructor(props) {
@@ -14,12 +15,15 @@ class App extends Component {
     this.decrement = this.decrement.bind(this);
   }
   componentDidMount() {
-    store.subscribe(() => {
+    unsubscribe = store.subscribe(() => {
       this.setState({
         number: store.getState().number
       })
     })
 
+  }
+  componentWillUnmount() {
+    unsubscribe();
   }
   increment() {
     let tempNum = this.state.number
