@@ -9,9 +9,3 @@ export const decrement = (text) => ({
     type: DECREMENT,
     text
 })
-// export const increment = {
-//     type: INCREMENT,
-// }
-// export const decrement = {
-//     type: DECREMENT
-// }

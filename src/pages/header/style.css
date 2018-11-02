@@ -1,0 +1,27 @@
+.header {
+    width: 100%;
+    position: relative;
+    background: #444;
+    font-size: 13px;
+}
+.header>.inner {
+    width: 90%;
+    margin: auto;
+    padding: 5px;
+}
+.header>.inner>.brand {
+    display: inline-block;
+    width: 120px;
+    padding: 3px 20px;
+    height: 34px;
+    line-height: 34px;
+    color: #ccc;
+    font-weight: 700;
+}
+.header>.inner>.brand>img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+}
+    

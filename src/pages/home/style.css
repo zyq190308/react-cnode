@@ -1,0 +1,114 @@
+.main-header {
+    padding: 10px;
+    background-color: #f6f6f6;
+    border-radius: 3px 3px 0 0;
+}
+.main-header>.topic-tab {
+    margin: 0 10px;
+    color: #80bd01;
+}
+.main-content {
+    /* background-color: brown; */
+    margin-bottom: 10px;
+}
+.main-content .pagination-wrap {
+    margin-top: 10px;
+}
+
+.main-content .cell {
+    position: relative;
+    padding: 10px;
+    font-size: 14px;
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+    overflow: hidden;
+}
+.main-content .cell:last-child {
+    margin-bottom: 10px;
+}
+.main-content>.cell:nth-child(1) {
+    border-top: none;
+}
+
+.main-content .cell img {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    vertical-align: middle;
+    border: 0;
+}
+
+.main-content .cell .reply_count {
+    width: 70px;
+    display: inline-block;
+    text-align: center;
+    line-height: 2em;
+}
+
+.main-content .cell .count_of_replies {
+    color: #9e78c0;
+}
+
+.main-content .cell .count_seperator {
+    margin: 0 1px;
+    font-size: 10px;
+}
+
+.main-content .cell a{
+    color: #778087;
+}
+
+.main-content .cell .count_of_visits {
+    font-size: 10px;
+    color: #b4b4b4;
+}
+
+.main-content .cell .last-time {
+    font-size: 11px;
+    display: inline-block;
+    margin-left: 20px;
+    color: #777;
+}
+.main-content .cell .last-time>.user_small_avatar {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: .5em;
+    border-radius: 3px;
+}
+.main-content .cell .put_top {
+    display: inline-block;
+    background: #80bd01;
+    padding: 2px 4px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 4px;
+}
+.main-content .cell .topic_title {
+    display: inline-block;
+    width: 600px;
+    margin-left: 4px;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 30px;
+    color: #333;
+}
+
+.main-content .cell .last-time .last_active_time {
+    text-align: right;
+    min-width: 50px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}

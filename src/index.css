@@ -1,0 +1,7 @@
+html, body, ul {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    background-color: #E1E0E0;
+}

@@ -5,7 +5,6 @@ const initialState = {
 }
 
 function todoApp(state=initialState, action) {
-    console.log(action)
     switch(action.type) {
         case INCREMENT:
             return Object.assign({}, state, {
