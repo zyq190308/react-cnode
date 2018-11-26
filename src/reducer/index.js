@@ -1,4 +1,4 @@
-import { INIT_DETAIL } from '../action/actionTypes'
+import { INIT_DETAIL, GET_LIST } from '../action/actionTypes'
 
 const initialState = {
     detail: {
@@ -10,7 +10,8 @@ const initialState = {
             avatar_url: '',
             loginname: ''
         }
-    }
+    },
+    list: []
 }
 
 function App(state=initialState, action) {
@@ -18,6 +19,10 @@ function App(state=initialState, action) {
         case INIT_DETAIL:
             return Object.assign({}, state, {
                 detail: action.detail
+            });
+        case GET_LIST:
+            return Object.assign({}, state, {
+                list: action.list
             });
         default:
         return state;

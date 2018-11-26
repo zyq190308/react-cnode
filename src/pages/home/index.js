@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { Button } from 'antd';
 
 import './style.css';
-import { getTopics } from '../../api';
+import { fetchList } from '../../action'
 
 class Home extends Component {
     constructor(props) {
@@ -66,18 +67,10 @@ class Home extends Component {
         })
     }
     getTopics() {
-        let params = {
+        this.props.getMainList({
             page: this.state.page,
             limit: this.state.limit,
             tab: this.state.tab
-        }
-        getTopics(params).then(res => {
-            const { status, data } = res;
-            if(status === 200) {
-                this.setState({
-                    list: data.data
-                });
-            }
         })
     }
     judgeType(item) {
@@ -95,7 +88,11 @@ class Home extends Component {
         }
     }
     componentDidMount() {
-        this.getTopics()
+        this.props.getMainList({
+            page: this.state.page,
+            limit: this.state.limit,
+            tab: this.state.tab
+        })
     }
     render() {
         let active = this.state.tab;
@@ -110,7 +107,7 @@ class Home extends Component {
                     <span className={"topic-tab "+  (active ==='dev'? 'active' : '')} onClick={() => { this.getTopicByType('dev') }}>客户端测试</span>
                 </div>
                 {
-                    this.state.list.map((item) => (
+                    this.props.list.map((item) => (
                         <div className="main-content" key={item.id}>
                             <div className="cell" key={item.id}>
                                 <a href="#" className="pull-left"><img src={item.author.avatar_url} title="avatar"/></a>
@@ -140,4 +137,19 @@ class Home extends Component {
     }
 }
 
-export default Home;
+
+const mapStateToProps = (state) => {
+    return {
+        list: state.list
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getMainList(params) {
+            dispatch(fetchList(params))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,15 +1,15 @@
-import { getTopicDetail } from '../api';
+import { getTopicDetail, getTopics } from '../api';
 
-import { CHANGE_TAB, INIT_DETAIL } from './actionTypes'
-
-export const changeTab = (tab) => ({
-    type: CHANGE_TAB,
-    tab
-})
+import { GET_LIST, INIT_DETAIL } from './actionTypes'
 
 export const initDetail = (detail) => ({
     type: INIT_DETAIL,
     detail
+})
+
+export const getList = (list) => ({
+    type: GET_LIST,
+    list
 })
 
 export const getDetail = (id) => {
@@ -19,6 +19,18 @@ export const getDetail = (id) => {
             if(status === 200) {
                 const res = data.data
                 dispatch(initDetail(res))
+            }
+        })
+    }
+}
+
+export const fetchList = (params) => {
+    return (dispatch) => {
+        getTopics(params).then(res => {
+            const { status, data } = res
+            if(status === 200) {
+                const res = data.data
+                dispatch(getList(res))
             }
         })
     }
