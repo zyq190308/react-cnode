@@ -1,0 +1,92 @@
+.detail {
+    width: 950px;
+    margin: 0 auto;
+}
+
+.panel {
+    background-color: #ffffff;
+    margin-bottom: 13px;
+}
+.panel-header {
+    padding: 10px;
+    border-radius: 3px 3px 0 0;
+    -webkit-border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+    -ms-border-radius: 3px 3px 0 0;
+    -o-border-radius: 3px 3px 0 0;
+}
+.panel-header .title-desc {
+    font-size: 12px;
+    color: #838383
+}
+.panel-header .title-desc span {
+    letter-spacing: 2px;
+}
+
+.panel-header .topic-full-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 8px 0;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 75%;
+    line-height: 130%;
+}
+
+.panel-header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.panel-html {
+    padding: 10px;
+    border-radius: 0 0 3px 3px;
+}
+
+.panel-html img {
+    width: 100%;
+}
+
+.col_fade {
+    color: #444;
+}
+
+.reply {
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.reply-item {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.reply-item .author-content img {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.reply-item .user-info {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.reply-item .reply-content img{
+    max-width: 100%;
+}
+.reply-item .user-info .nick {
+    /* display: inline-block; */
+    color: #666;
+    margin-right: 10px;
+}
+
+.reply-item .user-action {
+    float: right;
+}
+
+.reply-item .reply-content {
+    padding-left: 50px;
+}
+
+

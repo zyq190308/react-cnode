@@ -1,18 +1,23 @@
-import { INCREMENT, DECREMENT } from '../action/actionTypes'
+import { INIT_DETAIL } from '../action/actionTypes'
 
 const initialState = {
-    number: 0
+    detail: {
+        title: '',
+        content: '',
+        reply_count: '',
+        replies: [],
+        author: {
+            avatar_url: '',
+            loginname: ''
+        }
+    }
 }
 
-function todoApp(state=initialState, action) {
+function App(state=initialState, action) {
     switch(action.type) {
-        case INCREMENT:
+        case INIT_DETAIL:
             return Object.assign({}, state, {
-                number: ++state.number
-            });
-        case DECREMENT:
-            return Object.assign({}, state, {
-                number: --state.number
+                detail: action.detail
             });
         default:
         return state;
@@ -20,4 +25,4 @@ function todoApp(state=initialState, action) {
     
 }
 
-export default todoApp;
+export default App;

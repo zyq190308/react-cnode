@@ -1,11 +1,25 @@
-import { INCREMENT, DECREMENT } from './actionTypes'
+import { getTopicDetail } from '../api';
 
-export const increment = (text) => ({
-    type: INCREMENT,
-    text
+import { CHANGE_TAB, INIT_DETAIL } from './actionTypes'
+
+export const changeTab = (tab) => ({
+    type: CHANGE_TAB,
+    tab
 })
 
-export const decrement = (text) => ({
-    type: DECREMENT,
-    text
+export const initDetail = (detail) => ({
+    type: INIT_DETAIL,
+    detail
 })
+
+export const getDetail = (id) => {
+    return (dispatch) => {
+        getTopicDetail({id}).then(res => {
+            const { status, data } = res
+            if(status === 200) {
+                const res = data.data
+                dispatch(initDetail(res))
+            }
+        })
+    }
+}

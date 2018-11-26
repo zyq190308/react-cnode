@@ -12,7 +12,7 @@ class Home extends Component {
             list: [],
             page: 1,
             limit: 30,
-            tab: ''
+            tab: 'all'
         };
         this.handlePre = this.handlePre.bind(this);
         this.handleNext = this.handleNext.bind(this);
@@ -80,19 +80,34 @@ class Home extends Component {
             }
         })
     }
+    judgeType(item) {
+        let top = item.top
+        let good = item.good
+        let tab = this.state.tab
+        if(top) {
+            return '置顶'
+        }else if(good) {
+            return '精华'
+        }else if(tab==='all'&&item.tab==='ask') {
+            return '问答'
+        }else if(tab==='all'&&item.tab==='share') {
+            return '分享'
+        }
+    }
     componentDidMount() {
         this.getTopics()
     }
     render() {
+        let active = this.state.tab;
         return (
             <div>
                 <div className="main-header">
-                    <a href="javascript:void(0)" className="topic-tab" onClick={() => { this.getTopicByType('all') }}>全部</a>
-                    <a href="javascript:void(0)" className="topic-tab" onClick={() => { this.getTopicByType('good') }}>精华</a>
-                    <a href="javascript:void(0)" className="topic-tab" onClick={() => { this.getTopicByType('share') }}>分享</a>
-                    <a href="javascript:void(0)" className="topic-tab" onClick={() => { this.getTopicByType('ask') }}>问答</a>
-                    <a href="javascript:void(0)" className="topic-tab" onClick={() => { this.getTopicByType('job') }}>招聘</a>
-                    <a href="javascript:void(0)" className="topic-tab" onClick={() => { this.getTopicByType('dev') }}>客户端测试</a>
+                    <span className={"topic-tab "+  (active ==='all'? 'active' : '')} onClick={() => { this.getTopicByType('all') }}>全部</span>
+                    <span className={"topic-tab "+  (active ==='good'? 'active' : '')} onClick={() => { this.getTopicByType('good') }}>精华</span>
+                    <span className={"topic-tab "+  (active ==='share'? 'active' : '')} onClick={() => { this.getTopicByType('share') }}>分享</span>
+                    <span className={"topic-tab "+  (active ==='ask'? 'active' : '')} onClick={() => { this.getTopicByType('ask') }}>问答</span>
+                    <span className={"topic-tab "+  (active ==='job'? 'active' : '')} onClick={() => { this.getTopicByType('job') }}>招聘</span>
+                    <span className={"topic-tab "+  (active ==='dev'? 'active' : '')} onClick={() => { this.getTopicByType('dev') }}>客户端测试</span>
                 </div>
                 {
                     this.state.list.map((item) => (
@@ -107,7 +122,7 @@ class Home extends Component {
                                 <a href="#" className="last_time pull-right">
                                     <span className="last_active_time">{this.replyTime(item.last_reply_at)}</span>
                                 </a>
-                                <span className="put_top">置顶</span>
+                                <span className={"put_top "+ (item.good!==true&&item.top!==true?'put_top_gray':'')}>{this.judgeType(item)}</span>
                                 <Link className="topic_title" title={item.title} to={`/Detail/${item.id}`}>
                                     {item.title}
                                 </Link>
